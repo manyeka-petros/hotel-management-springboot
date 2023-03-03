@@ -1,4 +1,4 @@
-package com.mapoto.Files.Entiy;
+package com.mapoto.HotelManagement.Entiy;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
