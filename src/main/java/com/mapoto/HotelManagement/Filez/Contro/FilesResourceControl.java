@@ -1,9 +1,10 @@
 package com.mapoto.HotelManagement.Filez.Contro;
 
-import com.mapoto.Files.Filez.Entitys.FilesResource;
-import com.mapoto.Files.Filez.Models.FilesModels;
-import com.mapoto.Files.Filez.Servi.FilesResourceImplement;
-import com.mapoto.Files.Filez.Servi.FilesResourceService;
+
+import com.mapoto.HotelManagement.Filez.Entitys.FilesResource;
+import com.mapoto.HotelManagement.Filez.Models.FilesModels;
+import com.mapoto.HotelManagement.Filez.Servi.FilesResourceImplement;
+import com.mapoto.HotelManagement.Filez.Servi.FilesResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
@@ -32,7 +33,7 @@ public class FilesResourceControl {
     public FilesModels uploadFiles(@RequestParam("file") MultipartFile file, @RequestParam("category") String category) throws Exception {
         //FilesResource filesResource = null;
         String downloadUrl = "";
-      FilesResource  filesResource = filesResourceService.uploadFiles(file,category);
+      FilesResource filesResource = filesResourceService.uploadFiles(file,category);
 
         downloadUrl = ServletUriComponentsBuilder.fromCurrentContextPath().path("/download/")
                 .path(filesResource.getFileId()).toUriString();

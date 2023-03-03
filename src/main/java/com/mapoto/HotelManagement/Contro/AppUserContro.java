@@ -1,9 +1,11 @@
 package com.mapoto.HotelManagement.Contro;
 
-import com.mapoto.Files.Entiy.AppUser;
-import com.mapoto.Files.Entiy.Roles;
-import com.mapoto.Files.Model.AppUserModels;
-import com.mapoto.Files.Servi.AppUserServi;
+
+
+import com.mapoto.HotelManagement.Entiy.AppUsers;
+import com.mapoto.HotelManagement.Entiy.Roles;
+import com.mapoto.HotelManagement.Model.AppUserModels;
+import com.mapoto.HotelManagement.Servi.AppUserServi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,8 +21,8 @@ public class AppUserContro {
         return appUserServi.saveRole(roles);
     }
     @GetMapping("/gets")
-    public List<AppUser> getAllUsers(){
-        return appUserServi.getAllUsers();
+    public List<AppUsers> getAllUsers(){
+        return appUserServi.getAllUser();
     }
     @DeleteMapping("/del/{userId}")
 

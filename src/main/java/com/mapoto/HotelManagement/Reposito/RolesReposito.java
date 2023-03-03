@@ -1,7 +1,8 @@
 package com.mapoto.HotelManagement.Reposito;
 
-import com.mapoto.Files.Entiy.AppUserRoles;
-import com.mapoto.Files.Entiy.Roles;
+
+import com.mapoto.HotelManagement.Entiy.AppUserRoles;
+import com.mapoto.HotelManagement.Entiy.Roles;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

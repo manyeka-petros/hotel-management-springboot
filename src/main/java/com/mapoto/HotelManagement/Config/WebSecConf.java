@@ -1,6 +1,7 @@
 package com.mapoto.HotelManagement.Config;
 
-import com.mapoto.Files.Servi.AppUserSer;
+
+import com.mapoto.HotelManagement.Servi.AppUserSer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,7 +29,7 @@ public class WebSecConf {
         httpSecurity
                 .csrf().disable()
 
-                .authorizeHttpRequests().requestMatchers(HttpMethod.POST,"/save").permitAll();
+                .authorizeHttpRequests();
         httpSecurity.authorizeHttpRequests().anyRequest().permitAll();
                //.and() .httpBasic();
        httpSecurity.authenticationProvider(daoAuthenticationProvider());

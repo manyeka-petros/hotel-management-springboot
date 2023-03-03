@@ -1,16 +1,17 @@
 package com.mapoto.HotelManagement.Servi;
 
-import com.mapoto.Files.Emails.EmailValidator;
-import com.mapoto.Files.Emails.SendEmai;
-import com.mapoto.Files.Entiy.AppUser;
-import com.mapoto.Files.Entiy.AppUserRoles;
-import com.mapoto.Files.Entiy.Roles;
-import com.mapoto.Files.Model.AppUserModels;
-import com.mapoto.Files.Reposito.AppUserRepository;
-import com.mapoto.Files.Reposito.RolesReposito;
-import com.mapoto.Files.VerifiToken.VerificationToken;
-import com.mapoto.Files.VerifiToken.VerificationTokenRepository;
-import com.mapoto.Files.VerifiToken.VerificationTokenService;
+
+import com.mapoto.HotelManagement.Emails.EmailValidator;
+import com.mapoto.HotelManagement.Emails.SendEmai;
+import com.mapoto.HotelManagement.Entiy.AppUserRoles;
+import com.mapoto.HotelManagement.Entiy.AppUsers;
+import com.mapoto.HotelManagement.Entiy.Roles;
+import com.mapoto.HotelManagement.Model.AppUserModels;
+import com.mapoto.HotelManagement.Reposito.AppUserRepository;
+import com.mapoto.HotelManagement.Reposito.RolesReposito;
+import com.mapoto.HotelManagement.VerifiToken.VerificationToken;
+import com.mapoto.HotelManagement.VerifiToken.VerificationTokenRepository;
+import com.mapoto.HotelManagement.VerifiToken.VerificationTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -45,10 +46,7 @@ public class AppUserServiImpleme implements AppUserServi{
 
 
 
-    @Override
-    public List<AppUser> getAllUsers() {
-        return appUserRepository.findAll();
-    }
+
 
     @Override
     public String removeUser(Long userId) {
@@ -72,7 +70,7 @@ public class AppUserServiImpleme implements AppUserServi{
         if(appUserRepository.existsByEmail(appUserModels.getEmail())){
             throw  new ResponseStatusException(HttpStatus.BAD_REQUEST,"The email entered already exist");
         }
-        AppUser appUser = new AppUser();
+        AppUsers appUser = new AppUsers();
         appUser.setFirstname(appUserModels.getFirstname());
         appUser.setLastname(appUserModels.getLastname());
         appUser.setEmail(appUserModels.getEmail());
@@ -124,7 +122,13 @@ public class AppUserServiImpleme implements AppUserServi{
 
         return "saved";
     }
-@Transactional
+
+    @Override
+    public List<AppUsers> getAllUser() {
+        return appUserRepository.findAll();
+    }
+
+    @Transactional
     public String confirmToken(String token) {
         VerificationToken verificationToken = verificationTokenService.getToken(token).orElseThrow(
                 ()-> new IllegalStateException("token not available")

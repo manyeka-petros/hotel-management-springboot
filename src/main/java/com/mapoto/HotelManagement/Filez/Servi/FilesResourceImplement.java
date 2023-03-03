@@ -1,7 +1,8 @@
 package com.mapoto.HotelManagement.Filez.Servi;
 
-import com.mapoto.Files.Filez.Entitys.FilesResource;
-import com.mapoto.Files.Filez.Reposit.FilesResourceRepository;
+
+import com.mapoto.HotelManagement.Filez.Entitys.FilesResource;
+import com.mapoto.HotelManagement.Filez.Reposit.FilesResourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

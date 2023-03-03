@@ -1,7 +1,8 @@
 package com.mapoto.HotelManagement.Servi;
 
-import com.mapoto.Files.Entiy.AppUser;
-import com.mapoto.Files.Reposito.AppUserRepository;
+
+import com.mapoto.HotelManagement.Entiy.AppUsers;
+import com.mapoto.HotelManagement.Reposito.AppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -21,7 +22,7 @@ public class AppUserSer implements UserDetailsService {
     private AppUserRepository appUserRepository;
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        AppUser appUser = appUserRepository.findAppUserByEmail(email).orElseThrow(
+        AppUsers appUser = appUserRepository.findAppUserByEmail(email).orElseThrow(
                 ()->    new UsernameNotFoundException("The user with email "+ email+ "not found")
         );
 

@@ -1,11 +1,12 @@
 package com.mapoto.HotelManagement.VerifiToken;
 
-import com.mapoto.Files.Entiy.AppUser;
-import jakarta.persistence.*;
+
+import com.mapoto.HotelManagement.Entiy.AppUsers;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 @Getter
 @Setter
@@ -26,9 +27,9 @@ public class VerificationToken {
             nullable = false,
             name = "app_user_id"
     )
-    private AppUser appUser;
+    private AppUsers appUser;
 
-    public VerificationToken(String token, LocalDate createdAt, LocalDate expiresAt, AppUser appUser) {
+    public VerificationToken(String token, LocalDate createdAt, LocalDate expiresAt, AppUsers appUser) {
         this.token = token;
         this.createdAt = createdAt;
         this.expiresAt = expiresAt;

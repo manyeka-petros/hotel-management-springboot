@@ -1,20 +1,19 @@
 package com.mapoto.HotelManagement.Entiy;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
-
 @Entity
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AppUser {
+@Getter
+@Setter
+public class AppUsers {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,7 +27,7 @@ public class AppUser {
     private boolean enabled;
     private boolean isLocked = false;
 
-    public AppUser(String firstname, String lastname, String email, String password, Set<Roles> roles, boolean enabled) {
+    public AppUsers(String firstname, String lastname, String email, String password, Set<Roles> roles, boolean enabled) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;

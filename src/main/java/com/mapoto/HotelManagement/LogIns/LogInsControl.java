@@ -1,8 +1,7 @@
 package com.mapoto.HotelManagement.LogIns;
 
-import com.mapoto.Files.JwtUtility.JwtUtilty;
-import com.mapoto.Files.Servi.AppUserSer;
-import com.mapoto.Files.Servi.AppUserServiImpleme;
+import com.mapoto.HotelManagement.Servi.AppUserSer;
+import com.mapoto.HotelManagement.Servi.AppUserServiImpleme;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -39,7 +38,7 @@ public class LogInsControl {
         //GENERATING TOKEN OF BEING AUTHENTICATED
         final UserDetails userDetails = appUserSer.loadUserByUsername(logInRequest.getEmail());
 
-        return "your token is  " + jwtUtilty.generateToken(userDetails) ;
+        return "your token is logged in "  ;
     }
     @GetMapping("/confirm")
     public String confirmToken(@RequestParam("token") String token){
