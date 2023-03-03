@@ -18,8 +18,7 @@ public class LogInsControl {
     private AppUserServiImpleme appUserServiImpleme;
     @Autowired
     private  AuthenticationManager authenticationManager;
-    @Autowired
-    private JwtUtilty jwtUtilty;
+
     @Autowired
     private AppUserSer appUserSer;
     @PostMapping("/sail")
