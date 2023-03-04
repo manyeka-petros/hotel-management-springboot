@@ -2,8 +2,6 @@ package com.mapoto.HotelManagement.Servi;
 
 
 import com.mapoto.HotelManagement.Emails.EmailValidator;
-import com.mapoto.HotelManagement.Emails.SendEmai;
-import com.mapoto.HotelManagement.Entiy.AppUserRoles;
 import com.mapoto.HotelManagement.Entiy.AppUsers;
 import com.mapoto.HotelManagement.Entiy.Roles;
 import com.mapoto.HotelManagement.Model.AppUserModels;
@@ -20,9 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 @Service
@@ -73,42 +69,8 @@ public class AppUserServiImpleme implements AppUserServi{
         appUser.setLastname(appUserModels.getLastname());
         appUser.setEmail(appUserModels.getEmail());
         appUser.setPassword(passwordEncoder.encode(appUserModels.getPassword()));
-        Set<String> roleString = appUserModels.getRoles();
-        Set<Roles> roles = new HashSet<>();
-        if(roleString == null){
-            Roles userRole = rolesReposito.findByName(AppUserRoles.ROLE_USER).orElseThrow(
-                    ()-> new RuntimeException("User role not found")
-            );
-            roles.add(userRole);
-        }
-        else {
-            roleString.forEach(
-                    role-> {
-                        switch (role){
-                            case "mod":
-                                Roles moderator = rolesReposito.findByName(AppUserRoles.ROLE_MODERATOR).orElseThrow(
-                                        ()-> new RuntimeException("The moderator role is not found")
-                                );
-                                roles.add(moderator);
-                                break;
-                            case "admin":
-                                Roles admin = rolesReposito.findByName(AppUserRoles.ROLE_ADMIN).orElseThrow(
-                                        ()-> new RuntimeException("The addmi not found ")
-                                );
-                                roles.add(admin);
-                                break;
-                            default:
-                                Roles userRole = rolesReposito.findByName(AppUserRoles.ROLE_USER).orElseThrow(
-                                        () -> new RuntimeException("user not found")
-                                );
-                                roles.add(userRole);
 
-                        }
-                    }
-            );
-        }
-        appUser.setRoles(roles);
-
+        //jksdknkjdnkskjsj
         appUserRepository.save(appUser);
         String token = UUID.randomUUID().toString();
         VerificationToken verificationToken = new VerificationToken(

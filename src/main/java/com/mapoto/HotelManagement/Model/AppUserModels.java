@@ -1,5 +1,6 @@
 package com.mapoto.HotelManagement.Model;
 
+import com.mapoto.HotelManagement.Entiy.Roles;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +18,7 @@ public class AppUserModels {
 
     private  String email;
     private String password;
-    private Set<String> roles;
+    private Roles roles;
 
 
 }

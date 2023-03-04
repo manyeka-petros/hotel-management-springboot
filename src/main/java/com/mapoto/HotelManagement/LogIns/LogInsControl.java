@@ -36,8 +36,7 @@ public class LogInsControl {
                     logInRequest.getPassword() +" is not correct");
 
         }
-        //GENERATING TOKEN OF BEING AUTHENTICATED
-        final UserDetails userDetails = appUserSer.loadUserByUsername(logInRequest.getEmail());
+
 
         return "your token is logged in "  ;
     }

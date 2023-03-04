@@ -22,12 +22,13 @@ public class AppUsers {
     private String lastname;
     private String email;
     private String password;
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Set<Roles> roles = new HashSet<>();
+    @OneToOne
+    @JoinColumn(name = "roles_id")
+    private Roles roles ;
     private boolean enabled;
     private boolean isLocked = false;
 
-    public AppUsers(String firstname, String lastname, String email, String password, Set<Roles> roles, boolean enabled) {
+    public AppUsers(String firstname, String lastname, String email, String password, Roles roles, boolean enabled) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;

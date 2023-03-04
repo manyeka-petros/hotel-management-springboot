@@ -18,6 +18,9 @@ public class Roles {
 @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Enumerated(EnumType.STRING)
-    private AppUserRoles name;
+
+    private String roles;
+    @ManyToOne
+    @JoinColumn(name = "app_user_id")
+    private AppUsers appUsers;
 }
