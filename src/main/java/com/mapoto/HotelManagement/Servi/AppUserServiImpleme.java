@@ -41,8 +41,6 @@ public class AppUserServiImpleme implements AppUserServi{
     private  AppUserSer appUserSer;
     @Autowired
     private EmailValidator emailValidator;
-    @Autowired
-    private SendEmai sendEmai;
 
 
 
@@ -118,7 +116,7 @@ public class AppUserServiImpleme implements AppUserServi{
         );
         verificationTokenService.saveVerificationToken(verificationToken);
         String link = "http://localhost:8080/confirm?token="+ token;
-        sendEmai.sendmail(appUserModels.getEmail(),buildEmail(appUserModels.getFirstname(),link));
+
 
         return "saved";
     }

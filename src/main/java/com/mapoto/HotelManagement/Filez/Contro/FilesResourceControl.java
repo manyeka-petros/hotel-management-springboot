@@ -30,10 +30,14 @@ public class FilesResourceControl {
 
     @PostMapping( value = "/upload",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 
-    public FilesModels uploadFiles(@RequestParam("file") MultipartFile file, @RequestParam("category") String category) throws Exception {
+    public FilesModels uploadFiles(@RequestParam("file") MultipartFile file,
+                                   @RequestParam("category") String category,
+                                   @RequestParam("roomType") String roomType,
+                                   @RequestParam("cost") String cost
+                                   ) throws Exception {
         //FilesResource filesResource = null;
         String downloadUrl = "";
-      FilesResource filesResource = filesResourceService.uploadFiles(file,category);
+      FilesResource filesResource = filesResourceService.uploadFiles(file,category,roomType,cost);
 
         downloadUrl = ServletUriComponentsBuilder.fromCurrentContextPath().path("/download/")
                 .path(filesResource.getFileId()).toUriString();
@@ -67,7 +71,9 @@ public class FilesResourceControl {
                             filesResource.getFiletype(),
 
                             filesResource.getData().length,
-                            filesResource.getCategory()
+                            filesResource.getCategory(),
+                            filesResource.getRoomType(),
+                            filesResource.getCost()
 
 
 

@@ -16,13 +16,14 @@ public class FilesResourceImplement implements FilesResourceService{
     private FilesResourceRepository filesResourceRepository;
 
     @Override
-    public FilesResource uploadFiles(MultipartFile file, String category) throws Exception {
+    public FilesResource uploadFiles(MultipartFile file, String category,String roomType,String cost) throws Exception {
         String filename = StringUtils.cleanPath(file.getOriginalFilename());
         try {
             if(filename.contains("...")){
                 throw new Exception("The file contains invalide content");
             }
-            FilesResource filesResource = new FilesResource(filename,file.getContentType(),file.getBytes(),category);
+            FilesResource filesResource = new FilesResource(filename,file.getContentType(),file.getBytes(),category,
+                    roomType,cost);
 
             return filesResourceRepository.save(filesResource);
 

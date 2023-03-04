@@ -15,6 +15,8 @@ public class FilesModels {
     private String filetype;
     private long filesize;
     private String category;
+    private String roomType;
+    private String cost;
 
     public FilesModels(String filename, String downloadUrl, String filetype, long filesize) {
         this.filename = filename;
