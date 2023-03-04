@@ -27,9 +27,9 @@ public class WebSecConf {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-                .csrf().disable()
+                .csrf().disable();
 
-                .authorizeHttpRequests();
+
         httpSecurity.authorizeHttpRequests().anyRequest().permitAll();
                //.and() .httpBasic();
        httpSecurity.authenticationProvider(daoAuthenticationProvider());

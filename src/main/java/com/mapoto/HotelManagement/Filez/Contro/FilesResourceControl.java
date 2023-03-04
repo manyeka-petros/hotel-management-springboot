@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@CrossOrigin("http://localhost:8081")
+@CrossOrigin("http://localhost:3000")
 
 public class FilesResourceControl {
     @Autowired
@@ -32,12 +32,12 @@ public class FilesResourceControl {
 
     public FilesModels uploadFiles(@RequestParam("file") MultipartFile file,
                                    @RequestParam("category") String category,
-                                   @RequestParam("roomType") String roomType,
+                                   @RequestParam("roomNumber") String roomNumber,
                                    @RequestParam("cost") String cost
                                    ) throws Exception {
         //FilesResource filesResource = null;
         String downloadUrl = "";
-      FilesResource filesResource = filesResourceService.uploadFiles(file,category,roomType,cost);
+      FilesResource filesResource = filesResourceService.uploadFiles(file,category,roomNumber,cost);
 
         downloadUrl = ServletUriComponentsBuilder.fromCurrentContextPath().path("/download/")
                 .path(filesResource.getFileId()).toUriString();
@@ -72,7 +72,7 @@ public class FilesResourceControl {
 
                             filesResource.getData().length,
                             filesResource.getCategory(),
-                            filesResource.getRoomType(),
+                            filesResource.getRoomNumber(),
                             filesResource.getCost()
 
 

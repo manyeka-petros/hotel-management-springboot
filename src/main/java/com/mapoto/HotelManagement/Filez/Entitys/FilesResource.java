@@ -24,15 +24,15 @@ public class FilesResource {
     @Lob
     private byte[] data;
     private String category;
-    private String roomType;
+    private String roomNumber;
     private String cost;
 
-    public FilesResource(String filename, String filetype, byte[] data, String category, String roomType, String cost) {
+    public FilesResource(String filename, String filetype, byte[] data, String category, String roomNumber, String cost) {
         this.filename = filename;
         this.filetype = filetype;
         this.data = data;
         this.category = category;
-        this.roomType = roomType;
+        this.roomNumber = roomNumber;
         this.cost = cost;
     }
 }
