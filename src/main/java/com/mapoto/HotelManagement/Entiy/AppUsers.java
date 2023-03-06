@@ -6,8 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Collection;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,27 +16,19 @@ import java.util.Set;
 public class AppUsers {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
-    private String firstname;
-    private String lastname;
+
+    private String username;
     private String email;
     private String password;
-    @OneToOne
-    @JoinColumn(name = "roles_id")
-    private Roles roles ;
-    private boolean enabled;
-    private boolean isLocked = false;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Collection<Roles>roles;
 
-    public AppUsers(String firstname, String lastname, String email, String password, Roles roles, boolean enabled) {
-        this.firstname = firstname;
-        this.lastname = lastname;
+
+    public AppUsers(String username, String email, String password) {
+        this.username = username;
         this.email = email;
         this.password = password;
-        this.roles = roles;
-        this.enabled = enabled;
-    }
-    public boolean isEnabled() {
-        return enabled;
     }
 }

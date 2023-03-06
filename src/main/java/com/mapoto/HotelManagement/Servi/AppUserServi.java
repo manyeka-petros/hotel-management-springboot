@@ -10,13 +10,9 @@ import java.util.List;
 public interface AppUserServi {
 
 
+    String saveRoles(Roles roles);
 
-
-    String removeUser(Long userId);
-
-    String saveRole(Roles roles);
+    List<Roles> getAllRoles();
 
     String registerUsers(AppUserModels appUserModels);
-
-    List<AppUsers> getAllUser();
 }

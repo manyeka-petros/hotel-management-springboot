@@ -13,12 +13,13 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AppUserModels {
-    private String firstname;
-    private String lastname;
+
+    private String username;
 
     private  String email;
     private String password;
     private Roles roles;
+    private Set<String> role;
 
 
 }
