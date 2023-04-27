@@ -25,8 +25,8 @@ public class BookRoom {
     private String phoneNumber;
     private double cost;
     private String bedType;
-    private Date checkIn;
-    private Date checkOut;
+    private String checkIn;
+    private String checkOut;
     private int roomNumber;
     private double totalCost;
 }

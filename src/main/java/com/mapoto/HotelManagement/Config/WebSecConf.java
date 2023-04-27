@@ -1,12 +1,11 @@
 package com.mapoto.HotelManagement.Config;
 
 
-import com.mapoto.HotelManagement.Servi.AppUserDea;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import org.springframework.http.HttpMethod;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -44,11 +43,11 @@ public class WebSecConf {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity security) throws Exception {
         security.csrf().disable()
-        .        authorizeHttpRequests().antMatchers("/").permitAll()
-                .antMatchers("/save").permitAll()
+        .        authorizeHttpRequests().anyRequest().permitAll();//antMatchers("/").permitAll()
+               // .antMatchers("/save").permitAll()
                 //.antMatchers("/log").permitAll()
-                .anyRequest().authenticated()
-                .and().httpBasic();
+                //.anyRequest().authenticated()
+               //.and().httpBasic();
 
 
         return security.build();

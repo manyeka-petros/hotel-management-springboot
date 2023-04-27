@@ -20,13 +20,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("*")
 @RequiredArgsConstructor
 @RestController
 public class AppUserContro {
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
     @Autowired
     private AppUserServi appUserServi;
     @PostMapping("/role")
@@ -48,21 +46,6 @@ public class AppUserContro {
     @PreAuthorize("hasRole('USER')")
     public String loo(){
         return "you are looking";
-    }
-@PostMapping("/log")
-    public String logIns(@RequestBody LogInRequest logInRequest){
-        Authentication authentication;
-        try {
-            authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(logInRequest.getUsername(),logInRequest.getPassword())
-            );
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-        }catch (BadCredentialsException e){
-            throw new RuntimeException("bad credentials ");
-        }
-
-        return "logged in";
-
     }
 
 
